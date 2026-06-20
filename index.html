@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>See it? We’ll sort it. · Tea For Streets</title>
-<meta name="description" content="Tell Mr. T what’s broken on your block in LA or SF. Tea For Streets files the 311 request, tracks it to closure, and writes back the moment it’s fixed."/>
+<meta name="description" content="Tell Mr. Tea what’s broken on your block in LA or SF. Tea For Streets files the 311 request, tracks it to closure, and writes back the moment it’s fixed."/>
 <link rel="canonical" href="https://teaforstreets.app/report"/>
 <meta name="theme-color" content="#b9912f"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Tea For Streets"/>
-<meta property="og:title" content="See it? We’ll sort it. — Mr. T"/>
-<meta property="og:description" content="Tell Mr. T what’s broken on your block. We file it with the city, track it to closure, and tell you the moment it’s fixed."/>
+<meta property="og:title" content="See it? We’ll sort it. — Mr. Tea"/>
+<meta property="og:description" content="Tell Mr. Tea what’s broken on your block. We file it with the city, track it to closure, and tell you the moment it’s fixed."/>
 <meta property="og:url" content="https://teaforstreets.app/report"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%E2%98%95%3C/text%3E%3C/svg%3E"/>
@@ -56,11 +56,11 @@ body{margin:0;font-family:'Outfit',system-ui,-apple-system,sans-serif;color:var(
 </style></head><body>
 <div class="cap"><span class="tag">Tea For Streets · LA &amp; SF</span>
 <h1>“See it? We’ll sort it.”</h1>
-<p>Tell Mr. T what’s broken on your block. He files it with the city, tracks it to closure, and writes back the moment it’s fixed.</p></div>
+<p>Tell Mr. Tea what’s broken on your block. He files it with the city, tracks it to closure, and writes back the moment it’s fixed.</p></div>
 <div class="panel">
   <div class="head">
-    <span class="av" id="av"><img id="face" alt="Mr. T"></span>
-    <div><div class="nm">Mr. T</div><div class="sb" id="sb">your block, looked after</div></div>
+    <span class="av" id="av"><img id="face" alt="Mr. Tea"></span>
+    <div><div class="nm">Mr. Tea</div><div class="sb" id="sb">your block, looked after</div></div>
     <div class="prog" id="prog">Step 1 / 6</div>
   </div>
   <div class="body" id="body"></div>
@@ -78,7 +78,7 @@ const state={category:'',photo:'',city:'',address:'',desc:'',name:'',email:''};
 const FLOW_URL="";                                  /* ← paste webhook URL here */
 const ADMIN_EMAIL="admin@teaforstreets.app";
 function reportPayload(ref){return{reference:ref,category:state.category,photo:state.photo||"",city:state.city,address:state.address,description:state.desc||"",reporterName:state.name||"",reporterEmail:state.email,submittedAt:new Date().toISOString(),source:"teaforstreets.app/report"};}
-function mailtoFor(ref){var p=reportPayload(ref);var subj="New street report · "+ref+" · "+p.category+" · "+p.city;var body=["A resident filed this through Mr. T:","","Reference:  "+ref,"Issue:      "+p.category,"City:       "+p.city,"Location:   "+(p.address||"—"),"Photo:      "+(p.photo?p.photo+" (reporter to attach)":"—"),"Notes:      "+(p.description||"—"),"Reporter:   "+((p.reporterName?p.reporterName+" · ":"")+p.reporterEmail),"Submitted:  "+p.submittedAt].join("\n");return "mailto:"+ADMIN_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);}
+function mailtoFor(ref){var p=reportPayload(ref);var subj="New street report · "+ref+" · "+p.category+" · "+p.city;var body=["A resident filed this through Mr. Tea:","","Reference:  "+ref,"Issue:      "+p.category,"City:       "+p.city,"Location:   "+(p.address||"—"),"Photo:      "+(p.photo?p.photo+" (reporter to attach)":"—"),"Notes:      "+(p.description||"—"),"Reporter:   "+((p.reporterName?p.reporterName+" · ":"")+p.reporterEmail),"Submitted:  "+p.submittedAt].join("\n");return "mailto:"+ADMIN_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);}
 async function sendReport(ref){if(FLOW_URL){try{var r=await fetch(FLOW_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(reportPayload(ref))});if(r.ok)return"flow";}catch(e){}}return"email";}
 const cats=[['🕳️','Pothole'],['🎨','Graffiti'],['🗑️','Trash / dumping'],['💡','Broken streetlight'],['🚧','Blocked sidewalk'],['❓','Something else']];
 const quips={'Pothole':"A pothole — the street’s way of keeping everyone alert. Let’s get it filled.",'Graffiti':"Graffiti. Someone left their mark; let’s give the wall its dignity back.",'Trash / dumping':"Dumping — not on your block, not on my watch.",'Broken streetlight':"A dark corner. Let’s get the light back on.",'Blocked sidewalk':"A blocked path — everyone deserves a clear sidewalk. On it.",'Something else':"Something else — tell me more in a moment. I’m all ears."};
@@ -91,7 +91,7 @@ function field(){const d=document.createElement('div');d.className='field';body.
 function scroll(){body.scrollTop=body.scrollHeight;}
 
 function start(){setFace('greet');setStep(1);sb.textContent='waving hello';
-  bot("Hi — I’m <b>Mr. T</b>. ☕ You spotted something off on your block; that’s the hard part. Tell me what, and I’ll handle the rest — filed with the city, tracked till it’s fixed. What are we looking at?");
+  bot("Hi — I’m <b>Mr. Tea</b>. ☕ You spotted something off on your block; that’s the hard part. Tell me what, and I’ll handle the rest — filed with the city, tracked till it’s fixed. What are we looking at?");
   const c=ctrls();cats.forEach(([e,n])=>{const b=document.createElement('button');b.className='chip';b.innerHTML=e+' '+n;b.onclick=()=>{user(n);c.remove();state.category=n;askPhoto();};c.appendChild(b);});}
 function askPhoto(){setFace('listen');setStep(2);sb.textContent='all ears';
   bot(quips[state.category]+" A quick photo helps the city act faster — add one? (optional)");
@@ -132,7 +132,7 @@ function askContact(){setFace('listen');setStep(6);
   go.onclick=()=>{state.name=n.value.trim();state.email=e.value.trim();user((state.name?state.name+' · ':'')+state.email);f.remove();filing();};
   f.appendChild(n);f.appendChild(e);f.appendChild(go);n.focus();scroll();}
 function filing(){setFace('think');sb.textContent='on it…';setStep(7);
-  const t=document.createElement('div');t.className='typing';t.textContent='Mr. T is logging it…';body.appendChild(t);scroll();
+  const t=document.createElement('div');t.className='typing';t.textContent='Mr. Tea is logging it…';body.appendChild(t);scroll();
   const ref='TFS-'+Math.floor(1000+Math.random()*9000);
   const minWait=new Promise(r=>setTimeout(r,1300));
   Promise.all([sendReport(ref),minWait]).then(([via])=>{t.remove();finish(ref,via);}).catch(()=>{t.remove();finish(ref,'email');});}

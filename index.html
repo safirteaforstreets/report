@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>See it? We’ll sort it. · Tea For Streets</title>
-<meta name="description" content="Tell Mr. Tea what’s broken on your block in LA or SF. Tea For Streets files the 311 request, tracks it to closure, and writes back the moment it’s fixed."/>
+<meta name="description" content="Tell Clark what’s broken on your block. Tea For Streets files the 311 request, tracks it to closure, and writes back the moment it’s fixed."/>
 <link rel="canonical" href="https://teaforstreets.app/report"/>
 <meta name="theme-color" content="#b9912f"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Tea For Streets"/>
-<meta property="og:title" content="See it? We’ll sort it. — Mr. Tea"/>
-<meta property="og:description" content="Tell Mr. Tea what’s broken on your block. We file it with the city, track it to closure, and tell you the moment it’s fixed."/>
+<meta property="og:title" content="See it? We’ll sort it. — Clark"/>
+<meta property="og:description" content="Tell Clark what’s broken on your block. We file it with the city, track it to closure, and tell you the moment it’s fixed."/>
 <meta property="og:url" content="https://teaforstreets.app/report"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%E2%98%95%3C/text%3E%3C/svg%3E"/>
@@ -56,12 +56,12 @@ body{margin:0;font-family:'Outfit',system-ui,-apple-system,sans-serif;color:var(
 html.tfs-embed,html.tfs-embed body{height:auto;min-height:0;margin:0;padding:0;background:var(--card)}html.tfs-embed body{display:block}html.tfs-embed .cap,html.tfs-embed .note{display:none}html.tfs-embed .panel{width:100%;max-width:100%;height:100dvh;max-height:100dvh;border-radius:0;box-shadow:none}</style></head><body>
 <div class="cap"><span class="tag">Tea For Streets · LA &amp; SF</span>
 <h1>“See it? We’ll sort it.”</h1>
-<p>Tell Mr. Tea what’s broken on your block. He files it with the city, tracks it to closure, and writes back the moment it’s fixed.</p></div>
+<p>Tell Clark what’s broken on your block. He files it with the city, tracks it to closure, and writes back the moment it’s fixed.</p></div>
 <div class="panel">
   <div class="head">
-    <span class="av" id="av"><img id="face" alt="Mr. Tea"></span>
-    <div><div class="nm">Mr. Tea</div><div class="sb" id="sb">your block, looked after</div></div>
-    <div class="prog" id="prog">Step 1 / 6</div>
+    <span class="av" id="av"><img id="face" alt="Clark"></span>
+    <div><div class="nm">Clark the Cup</div><div class="sb" id="sb">your street, sorted</div></div>
+    <div class="prog" id="prog">Issue</div>
   </div>
   <div class="body" id="body"></div>
 </div>
@@ -81,23 +81,23 @@ const FORM_ENDPOINT="https://formsubmit.co/ajax/admin@teaforstreets.app"; /* $0 
 function exifGPS(file){return new Promise(function(res){try{var r=new FileReader();r.onerror=function(){res(null);};r.onload=function(){try{var v=new DataView(r.result),len=v.byteLength;if(len<12||v.getUint16(0)!==0xFFD8){return res(null);}var off=2;while(off+4<len){var m=v.getUint16(off);if(m===0xFFE1){var t=off+4;if(v.getUint32(t)!==0x45786966){return res(null);}var tiff=t+6,little=v.getUint16(tiff)===0x4949;var u16=function(o){return v.getUint16(o,little);},u32=function(o){return v.getUint32(o,little);};var ifd0=tiff+u32(tiff+4),n=u16(ifd0),gps=0,i,e;for(i=0;i<n;i++){e=ifd0+2+i*12;if(u16(e)===0x8825){gps=tiff+u32(e+8);break;}}if(!gps){return res(null);}var gn=u16(gps),latRef="N",lonRef="E",lat=null,lon=null,j,ge,tag;var rat3=function(o){return [u32(o)/u32(o+4),u32(o+8)/u32(o+12),u32(o+16)/u32(o+20)];};for(j=0;j<gn;j++){ge=gps+2+j*12;tag=u16(ge);if(tag===1){latRef=String.fromCharCode(v.getUint8(ge+8));}else if(tag===2){var d=rat3(tiff+u32(ge+8));lat=d[0]+d[1]/60+d[2]/3600;}else if(tag===3){lonRef=String.fromCharCode(v.getUint8(ge+8));}else if(tag===4){var d2=rat3(tiff+u32(ge+8));lon=d2[0]+d2[1]/60+d2[2]/3600;}}if(lat==null||lon==null){return res(null);}if(latRef==="S")lat=-lat;if(lonRef==="W")lon=-lon;return res({lat:+lat.toFixed(6),lon:+lon.toFixed(6)});}else{if((m>>8)!==0xFF){return res(null);}off+=2+v.getUint16(off+2);}}res(null);}catch(e){res(null);}};r.readAsArrayBuffer(file);}catch(e){res(null);}});}
 function mapsLink(c){return c?("https://maps.google.com/?q="+c.lat+","+c.lon):"";}
 function reportPayload(ref){return{reference:ref,category:state.category,photo:state.photo||"",address:state.address||"",pinnedGPS:state.coords?(state.coords.lat+","+state.coords.lon):"",pinnedMap:mapsLink(state.coords),photoGPS:state.photoCoords?(state.photoCoords.lat+","+state.photoCoords.lon):"",photoMap:mapsLink(state.photoCoords),reporterName:state.name||"",reporterEmail:state.email,submittedAt:new Date().toISOString(),source:"teaforstreets.app/report"};}
-function mailtoFor(ref){var p=reportPayload(ref);var subj="New street report · "+ref+" · "+p.category;var L=["A resident filed this through Mr. Tea:","","Reference:   "+ref,"Issue:       "+p.category,"Location:    "+(p.address||"—")];if(p.pinnedGPS)L.push("Pinned GPS:  "+p.pinnedGPS+"   "+p.pinnedMap);if(p.photoGPS)L.push("Photo GPS:   "+p.photoGPS+"   "+p.photoMap);L.push("Photo:       "+(p.photo?p.photo+" (reporter to attach)":"—"));L.push("Reporter:    "+((p.reporterName?p.reporterName+" · ":"")+p.reporterEmail));L.push("Submitted:   "+p.submittedAt);return "mailto:"+ADMIN_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(L.join("\n"));}
+function mailtoFor(ref){var p=reportPayload(ref);var subj="New street report · "+ref+" · "+p.category;var L=["A resident filed this through Clark:","","Reference:   "+ref,"Issue:       "+p.category,"Location:    "+(p.address||"—")];if(p.pinnedGPS)L.push("Pinned GPS:  "+p.pinnedGPS+"   "+p.pinnedMap);if(p.photoGPS)L.push("Photo GPS:   "+p.photoGPS+"   "+p.photoMap);L.push("Photo:       "+(p.photo?p.photo+" (reporter to attach)":"—"));L.push("Reporter:    "+((p.reporterName?p.reporterName+" · ":"")+p.reporterEmail));L.push("Submitted:   "+p.submittedAt);return "mailto:"+ADMIN_EMAIL+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(L.join("\n"));}
 async function sendReport(ref){var p=reportPayload(ref);if(FLOW_URL){try{var r=await fetch(FLOW_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)});if(r.ok)return"flow";}catch(e){}}if(FORM_ENDPOINT){try{var fd=Object.assign({_subject:"New street report · "+ref+" · "+p.category,_template:"table",_captcha:"false"},p);var r2=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(fd)});if(r2.ok)return"sent";}catch(e){}}return"email";}
 const cats=[['🕳️','Pothole'],['🎨','Graffiti'],['🗑️','Trash / dumping'],['💡','Broken streetlight'],['🚧','Blocked sidewalk'],['❓','Something else']];
 const quips={'Pothole':"A pothole — the street’s way of keeping everyone alert. Let’s get it filled.",'Graffiti':"Graffiti. Someone left their mark; let’s give the wall its dignity back.",'Trash / dumping':"Dumping — not on your block, not on my watch.",'Broken streetlight':"A dark corner. Let’s get the light back on.",'Blocked sidewalk':"A blocked path — everyone deserves a clear sidewalk. On it.",'Something else':"Something else — tell me more in a moment. I’m all ears."};
 function setFace(k){face.style.opacity=0;setTimeout(()=>{face.src=FACES[k];face.style.opacity=1;av.classList.add('pop');setTimeout(()=>av.classList.remove('pop'),360);},150);}
-function setStep(n){prog.textContent = {1:'Warming up',2:'Steeping',3:'Pouring',4:'Serving',5:'Brewing…'}[n]||'Served ☕';}
+function setStep(n){prog.textContent = {1:'Issue',2:'Photo',3:'Location',4:'Contact',5:'Sending…'}[n]||'Filed ✓';}
 function bot(html){const d=document.createElement('div');d.className='msg bot';d.innerHTML=html;body.appendChild(d);scroll();return d;}
 function user(t){const d=document.createElement('div');d.className='msg user';d.textContent=t;body.appendChild(d);scroll();}
 function ctrls(){const d=document.createElement('div');d.className='ctrls';body.appendChild(d);return d;}
 function field(){const d=document.createElement('div');d.className='field';body.appendChild(d);return d;}
 function scroll(){body.scrollTop=body.scrollHeight;}
 
-function start(){setFace('greet');setStep(1);sb.textContent='waving hello';
-  bot("Hi — I’m <b>Mr. Tea</b>. ☕ You spotted something off on your block; that’s the hard part. Tell me what, and I’ll handle the rest — filed with the city, tracked till it’s fixed. What are we looking at?");
+function start(){setFace('greet');setStep(1);sb.textContent='let’s get it sorted';
+  bot("Hi — I’m <b>Clark</b> (Clark the Cup ☕). You spotted something off on your block — tell me what it is and I’ll take it from there: filed with the city, tracked till it’s fixed. What are we looking at?");
   const c=ctrls();cats.forEach(([e,n])=>{const b=document.createElement('button');b.className='chip';b.innerHTML=e+' '+n;b.onclick=()=>{user(n);c.remove();state.category=n;askPhoto();};c.appendChild(b);});}
-function askPhoto(){setFace('listen');setStep(2);sb.textContent='all ears';
-  bot(quips[state.category]+" A quick photo helps the city act faster — add one? (optional)");
+function askPhoto(){setFace('listen');setStep(2);sb.textContent='on it';
+  bot("Got it. A photo helps the city act faster — add one if you’ve got it. (optional)");
   const f=field(),wrap=document.createElement('div');wrap.className='photo';
   const lab=document.createElement('label');lab.textContent='📷 Add a photo';
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.style.display='none';
@@ -128,30 +128,30 @@ function askLocation(){setFace('listen');setStep(3);
   go.onclick=()=>{state.address=inp.value.trim();user(state.address);f.remove();askContact();};
   f.appendChild(inp);f.appendChild(loc);f.appendChild(go);inp.focus();scroll();}
 function askContact(){setFace('listen');setStep(4);
-  bot("Last sip — where do I send the good news when it moves?");
+  bot("Last thing — where should I send updates as this moves?");
   const f=field(),nm=document.createElement('input');nm.placeholder='Your name (optional)';
   const em=document.createElement('input');em.type='email';em.placeholder='you@email.com';
-  const go=document.createElement('button');go.className='go';go.textContent='Brew it up ☕';go.disabled=true;
+  const go=document.createElement('button');go.className='go';go.textContent='Send it ☕';go.disabled=true;
   const ok=v=>/\S+@\S+\.\S+/.test(v);em.oninput=()=>{go.disabled=!ok(em.value);};
   go.onclick=()=>{state.name=nm.value.trim();state.email=em.value.trim();user((state.name?state.name+' · ':'')+state.email);f.remove();submitReport();};
   f.appendChild(nm);f.appendChild(em);f.appendChild(go);nm.focus();scroll();}
 function submitReport(){setFace('think');sb.textContent='on it…';setStep(5);
-  const t=document.createElement('div');t.className='typing';t.textContent='Mr. Tea is brewing it…';body.appendChild(t);scroll();
+  const t=document.createElement('div');t.className='typing';t.textContent='Clark is filing it…';body.appendChild(t);scroll();
   const ref='TFS-'+Math.floor(1000+Math.random()*9000);
   Promise.all([sendReport(ref),new Promise(r=>setTimeout(r,1100))]).then(([via])=>{t.remove();finish(ref,via);}).catch(()=>{t.remove();finish(ref,'email');});}
-function finish(ref,via){setFace('success');sb.textContent='one for the block';prog.textContent='Served ☕';
+function finish(ref,via){setFace('success');sb.textContent='one for the block';prog.textContent='Filed ✓';
   if(via==='email'){
-    bot("Nearly there. ☕ I couldn’t reach the kitchen just now — give it a tap below to send, and we’ll file it with the city and email <b>"+state.email+"</b> the moment it moves.");
+    bot("One more tap — I couldn’t send it automatically just now. Tap below and it’s on its way; I’ll email <b>"+state.email+"</b> the moment it moves.");
   }else{
-    bot("Consider it brewing. ☕ It’s with the team now — we’ll file it with the city and I’ll email <b>"+state.email+"</b> the moment it moves. You just made the block a little better.");
+    bot("Logged. ☕ I’ll file it with the city, track it through to the fix, and email <b>"+state.email+"</b> the moment the status changes — no chasing on your end.");
   }
   const locTxt=state.coords?('📍 '+state.coords.lat+', '+state.coords.lon):(state.address||'—');
   const s2=document.createElement('div');s2.className='summary';
-  const statusTxt=via==='email'?'Needs a tap to send':'Brewing ☕';
+  const statusTxt=via==='email'?'Needs a tap to send':'On it ☕';
   s2.innerHTML="<div class='row'><span class='k'>Reference</span><span class='v'>"+ref+"</span></div><div class='row'><span class='k'>Issue</span><span class='v'>"+state.category+"</span></div><div class='row'><span class='k'>Location</span><span class='v'>"+locTxt+"</span></div><div class='row'><span class='k'>Photo</span><span class='v'>"+(state.photo?(state.photoCoords?'Added · GPS ✓':'Added'):'—')+"</span></div><div class='row'><span class='k'>Status</span><span class='v' style='color:var(--green)'>"+statusTxt+"</span></div>";
   body.appendChild(s2);
   if(via==='email'){const f=field();const send=document.createElement('a');send.className='go';send.href=mailtoFor(ref);send.textContent='Send it to the team ✉️';send.style.textDecoration='none';send.style.textAlign='center';f.appendChild(send);}
-  bot("That’s one more corner looked after. <span class='cred'>☕ +15 street cred</span>");
+  bot("One more corner handled — nice work spotting it. ☕");
   const c=ctrls();const a=document.createElement('button');a.className='chip';a.textContent='Report another';a.onclick=()=>{state.category='';state.photo='';state.address='';state.coords=null;state.photoCoords=null;state.name='';state.email='';body.innerHTML='';start();};
   const b2=document.createElement('a');b2.className='chip ghost';b2.href='https://apps.apple.com/us/app/tea-for-streets/id6753090441';b2.target='_blank';b2.rel='noopener';b2.textContent='Get the app';b2.style.textDecoration='none';
   c.appendChild(a);c.appendChild(b2);scroll();}

@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "corpus": "Clark — Infrastructure Standards Corpus",
+    "version": "2026.06.20",
+    "lastReviewed": "2026-06-20",
+    "refreshCadenceDays": 90,
+    "maintainer": "Tea For Streets (TFS Live)",
+    "note": "Authoritative public standards, specs and codes that govern how each street issue is repaired. Each document is version-tracked and re-checked on the refresh cadence; status flips to 'revised' when a newer edition is found."
+  },
+  "documents": [
+    {
+      "id": "caltrans-2023",
+      "title": "Caltrans Standard Specifications",
+      "issuer": "California Dept. of Transportation (Caltrans)",
+      "level": "state",
+      "jurisdictions": [
+        "California"
+      ],
+      "docType": "construction specification",
+      "appliesTo": [
+        "Pothole",
+        "Blocked sidewalk"
+      ],
+      "url": "https://dot.ca.gov/programs/design/july-2023-ccs-standard-plans-and-standard-specifications/",
+      "currentRevision": "2023 Edition (Jul 2023; Revised Standard Plans Jan 2024)",
+      "publishedDate": "2023-07",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "Statewide standard for roadway/pavement construction and repair; baseline many CA cities reference."
+    },
+    {
+      "id": "greenbook-2024",
+      "title": "Standard Specifications for Public Works Construction (Greenbook)",
+      "issuer": "Public Works Standards, Inc. (APWA/AGC)",
+      "level": "regional",
+      "jurisdictions": [
+        "California"
+      ],
+      "docType": "construction specification",
+      "appliesTo": [
+        "Pothole",
+        "Broken streetlight",
+        "Blocked sidewalk"
+      ],
+      "url": "https://greenbookspecs.org/",
+      "currentRevision": "2024 Edition",
+      "publishedDate": "2024",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "The 'Greenbook' — model public-works construction spec used by LA and many CA cities; revised every three years."
+    },
+    {
+      "id": "prowag-2023",
+      "title": "Public Right-of-Way Accessibility Guidelines (PROWAG)",
+      "issuer": "U.S. Access Board",
+      "level": "federal",
+      "jurisdictions": [
+        "United States"
+      ],
+      "docType": "accessibility guideline",
+      "appliesTo": [
+        "Blocked sidewalk"
+      ],
+      "url": "https://www.access-board.gov/prowag/",
+      "currentRevision": "2023 Final Rule (eff. 2023-09-07; adopted by US DOT 2024-12-18)",
+      "publishedDate": "2023-08-08",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "Federal accessibility standard for sidewalks, curb ramps, crosswalks and pedestrian facilities in the public right-of-way."
+    },
+    {
+      "id": "ca-mutcd-2026",
+      "title": "California Manual on Uniform Traffic Control Devices (CA MUTCD)",
+      "issuer": "Caltrans",
+      "level": "state",
+      "jurisdictions": [
+        "California"
+      ],
+      "docType": "standard manual",
+      "appliesTo": [
+        "Something else"
+      ],
+      "url": "https://dot.ca.gov/programs/safety-programs/camutcd",
+      "currentRevision": "2026 Edition (eff. 2026-01-18; replaced 2014 Rev 9)",
+      "publishedDate": "2026-01-18",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "State standard for traffic signs, markings and signals. Recently updated — a live example of why the corpus is re-checked periodically."
+    },
+    {
+      "id": "la-bsl-design-2022",
+      "title": "Bureau of Street Lighting Design Standards & Guidelines",
+      "issuer": "City of Los Angeles, Bureau of Street Lighting",
+      "level": "city",
+      "jurisdictions": [
+        "Los Angeles"
+      ],
+      "docType": "design standard",
+      "appliesTo": [
+        "Broken streetlight"
+      ],
+      "url": "https://ladot.lacity.gov/sites/default/files/2022-08/bsl-street-lighhting-design-standards-and-guidelines.pdf",
+      "currentRevision": "2022 posting",
+      "publishedDate": "2022-08",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "LA's street-lighting design standards; references the latest Greenbook and BSL Special Specifications."
+    },
+    {
+      "id": "lamc-49-84",
+      "title": "LA Municipal Code, Art. 14 §49.84 — Graffiti Removal & Recovery",
+      "issuer": "City of Los Angeles",
+      "level": "city",
+      "jurisdictions": [
+        "Los Angeles"
+      ],
+      "docType": "municipal code",
+      "appliesTo": [
+        "Graffiti"
+      ],
+      "url": "https://codelibrary.amlegal.com/codes/los_angeles/latest/lamc/0-0-0-135513",
+      "currentRevision": "Current (amlegal 'latest')",
+      "publishedDate": "current",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "LA's graffiti abatement law; declares graffiti visible from public view a nuisance subject to abatement."
+    },
+    {
+      "id": "la-sanitation-dumping",
+      "title": "LA Sanitation — Illegal Dumping & Bulky-Item program",
+      "issuer": "City of Los Angeles, LA Sanitation (LASAN)",
+      "level": "city",
+      "jurisdictions": [
+        "Los Angeles"
+      ],
+      "docType": "program/standard",
+      "appliesTo": [
+        "Trash / dumping"
+      ],
+      "url": "https://www.lacitysan.org/",
+      "currentRevision": "program page",
+      "publishedDate": "current",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "verify",
+      "summary": "LASAN handles illegal dumping and bulky-item pickup; exact municipal-code section to be confirmed at next refresh."
+    },
+    {
+      "id": "sf-pw-standards",
+      "title": "SF Public Works — Standard Specifications & Plans",
+      "issuer": "City & County of San Francisco, Public Works",
+      "level": "city",
+      "jurisdictions": [
+        "San Francisco"
+      ],
+      "docType": "construction specification",
+      "appliesTo": [
+        "Pothole",
+        "Trash / dumping",
+        "Broken streetlight"
+      ],
+      "url": "https://sfpublicworks.org/services/standards-specifications-and-plans",
+      "currentRevision": "current posting",
+      "publishedDate": "current",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "SF Public Works engineering standard specifications and standard plans for streets and sidewalks."
+    },
+    {
+      "id": "sf-street-sidewalk-maint",
+      "title": "San Francisco Street & Sidewalk Maintenance Standards",
+      "issuer": "City & County of San Francisco",
+      "level": "city",
+      "jurisdictions": [
+        "San Francisco"
+      ],
+      "docType": "maintenance standard",
+      "appliesTo": [
+        "Blocked sidewalk",
+        "Pothole"
+      ],
+      "url": "https://www.sf.gov/street-and-sidewalk-maintenance-standards",
+      "currentRevision": "current posting",
+      "publishedDate": "current",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "current",
+      "summary": "SF's adopted street/sidewalk maintenance standards used for inspections and condition scoring."
+    },
+    {
+      "id": "sf-graffiti",
+      "title": "SF Public Works — Graffiti standard (zero tolerance; ~48-hr public removal)",
+      "issuer": "City & County of San Francisco, Public Works",
+      "level": "city",
+      "jurisdictions": [
+        "San Francisco"
+      ],
+      "docType": "policy/standard",
+      "appliesTo": [
+        "Graffiti"
+      ],
+      "url": "https://sfpublicworks.org/services/report-problem",
+      "currentRevision": "current policy",
+      "publishedDate": "current",
+      "retrievedDate": "2026-06-20",
+      "contentHash": null,
+      "status": "verify",
+      "summary": "SF's zero-tolerance graffiti policy; graffiti on public property removed within ~48 hours. SF Public Works Code article to be confirmed."
+    }
+  ]
+}

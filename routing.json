@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "version": "2026.06.20",
+    "lastReviewed": "2026-06-20",
+    "note": "Maps each issue category to the responsible department, the 311 channel and the governing standards (by source id). Jurisdiction is detected from the report location; unknowns fall back to needs-review."
+  },
+  "jurisdictions": {
+    "Los Angeles": {
+      "bbox": [
+        -118.67,
+        33.7,
+        -118.16,
+        34.34
+      ],
+      "aliases": [
+        "los angeles",
+        "los ángeles"
+      ],
+      "system": "MyLA311",
+      "open311": "Open311 endpoint TBD (confirm for Phase 2C)",
+      "generalUrl": "https://myla311.lacity.org"
+    },
+    "San Francisco": {
+      "bbox": [
+        -122.52,
+        37.7,
+        -122.35,
+        37.83
+      ],
+      "aliases": [
+        "san francisco"
+      ],
+      "system": "SF311",
+      "open311": "https://mobile311.sfgov.org/open311/v2",
+      "generalUrl": "https://sf311.org"
+    }
+  },
+  "routes": [
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Pothole",
+      "department": "StreetsLA — Bureau of Street Services",
+      "system": "MyLA311",
+      "serviceName": "Pothole / Roadway Repair",
+      "fileVia": "MyLA311 app, web, or 311 phone",
+      "typicalSLA": "varies (often a few business days)",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Graffiti",
+      "department": "Office of Community Beautification",
+      "system": "MyLA311",
+      "serviceName": "Graffiti Removal",
+      "fileVia": "MyLA311 app, web, or 311 phone",
+      "typicalSLA": "varies",
+      "standards": [
+        "lamc-49-84"
+      ],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Trash / dumping",
+      "department": "LA Sanitation (LASAN)",
+      "system": "MyLA311",
+      "serviceName": "Illegal Dumping / Bulky-Item Pickup",
+      "fileVia": "MyLA311 app, web, or 311 phone",
+      "typicalSLA": "varies",
+      "standards": [
+        "la-sanitation-dumping"
+      ],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Broken streetlight",
+      "department": "Bureau of Street Lighting",
+      "system": "MyLA311",
+      "serviceName": "Street Light Issue",
+      "fileVia": "MyLA311 app, web, or 311 phone",
+      "typicalSLA": "varies",
+      "standards": [
+        "la-bsl-design-2022",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Blocked sidewalk",
+      "department": "StreetsLA — Sidewalk (Safe Sidewalks LA)",
+      "system": "MyLA311",
+      "serviceName": "Sidewalk Repair / Obstruction",
+      "fileVia": "MyLA311 app, web, or 311 phone",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Los Angeles",
+      "category": "Something else",
+      "department": "",
+      "system": "MyLA311",
+      "serviceName": "",
+      "fileVia": "MyLA311 (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://myla311.lacity.org",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Pothole",
+      "department": "San Francisco Public Works",
+      "system": "SF311",
+      "serviceName": "Street Defect / Pothole",
+      "fileVia": "SF311 app, web, or 311 phone (Open311 API)",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "sf-pw-standards"
+      ],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Graffiti",
+      "department": "San Francisco Public Works",
+      "system": "SF311",
+      "serviceName": "Graffiti",
+      "fileVia": "SF311 app, web, or 311 phone (Open311 API)",
+      "typicalSLA": "~48 hrs on public property (city policy)",
+      "standards": [
+        "sf-graffiti"
+      ],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Trash / dumping",
+      "department": "San Francisco Public Works",
+      "system": "SF311",
+      "serviceName": "Street/Sidewalk Cleaning — Illegal Dumping",
+      "fileVia": "SF311 app, web, or 311 phone (Open311 API)",
+      "typicalSLA": "varies",
+      "standards": [
+        "sf-pw-standards"
+      ],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Broken streetlight",
+      "department": "SFPUC / PG&E (ownership varies)",
+      "system": "SF311",
+      "serviceName": "Streetlight Repair",
+      "fileVia": "SF311 app, web, or 311 phone (Open311 API)",
+      "typicalSLA": "varies",
+      "standards": [
+        "sf-pw-standards"
+      ],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Blocked sidewalk",
+      "department": "San Francisco Public Works",
+      "system": "SF311",
+      "serviceName": "Sidewalk",
+      "fileVia": "SF311 app, web, or 311 phone (Open311 API)",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "sf-street-sidewalk-maint"
+      ],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "San Francisco",
+      "category": "Something else",
+      "department": "",
+      "system": "SF311",
+      "serviceName": "",
+      "fileVia": "SF311 (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://sf311.org",
+      "needsReview": true
+    }
+  ]
+}

@@ -142,6 +142,7 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
  input.addEventListener('keydown',function(e){if(e.key==='Enter')send();});
  bub('bot','Hey — I’m <b>Clark</b>. Tell me what’s going on with your street, in your own words, and I’ll work out who fixes it and how.');
  ['There’s a deep pothole on Main near the school in LA','Someone dumped a couch on my block in San Francisco','This corner’s been broken for two years and nobody helps'].forEach(function(x){var b=document.createElement('button');b.className='chip';b.textContent=x;b.onclick=function(){send(b.textContent);};sug.appendChild(b);});
+ try{var qp=new URLSearchParams(location.search);var pre=(qp.get('msg')||qp.get('q')||'').trim();if(pre){setTimeout(function(){send(pre);},450);}}catch(e){}
 })();
 </script>
 </body>

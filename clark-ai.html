@@ -90,6 +90,8 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
  var KW=[['Pothole',['pothole','hole','road','asphalt','crater','tire']],['Graffiti',['graffiti','tag','spray','vandal','paint']],['Trash / dumping',['trash','dump','couch','mattress','garbage','litter','furniture','junk','pile']],['Broken streetlight',['streetlight','street light','light','lamp','dark','bulb','flicker']],['Blocked sidewalk',['sidewalk','curb','trip','wheelchair','walkway']]];
  var OTHER=['chicago','new york','nyc','brooklyn','queens','houston','phoenix','philadelphia','san antonio','san diego','dallas','austin','seattle','denver','boston','portland','oakland','sacramento','san jose','long beach','miami','atlanta','las vegas','detroit','nashville'];
  var ctx={awaiting:null,issue:null};
+ var CLARK_API='';
+ var hist=[];
  function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
  function pick(a){return a[Math.floor(Math.random()*a.length)];}
  function scd(){thread.scrollTop=thread.scrollHeight;}
@@ -105,7 +107,10 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
  function mirror(t){var m=t.match(/\b(near|by|on|at|next to|in front of|outside|down)\s+([A-Za-z0-9'’\.\- ]{2,40})/i);if(!m)return '';var p=(m[1]+' '+m[2]).trim().replace(/[,.;:]+$/,'');p=p.replace(/\s+(in\s+)?(los angeles|san francisco|\bla\b|\bsf\b)\b.*$/i,'').trim();if(p.length<4||/^(on|by|at|near|down|next to|outside)$/i.test(p))return '';return ' '+p;}
  function lead(t){if(frus(t))return pick(['Years of this with no fix — let’s actually move it. ','Too long for one block to carry. On it. ','I hear you — let’s get this off your plate. ']);if(urg(t))return pick(['That’s a hazard — I’m bumping it up. ','That one’s dangerous — priority. ']);return '';}
  function chips(arr){var h='<div class="cch"><span class="lbl">Grounded in</span>';arr.forEach(function(x){h+='<span class="src">&#10003; '+esc(x)+'</span>';});return h+'</div>';}
- function detb(r,sys){return '<div class="det" data-det>The details &#9662;</div><div class="detb">Filed as <b>'+esc(r.sn)+'</b> &middot; routed through '+esc(sys)+' &middot; held to: '+esc(r.st.join(', '))+'.</div>';}
+ function detb(sn,sys,st){return '<div class="det" data-det>The details &#9662;</div><div class="detb">Filed as <b>'+esc(sn)+'</b> &middot; routed through '+esc(sys)+' &middot; held to: '+esc((st||[]).join(', '))+'.</div>';}
+ function actions(dept){var ac=document.createElement('div');ac.className='cch';ac.style.alignSelf='flex-start';ac.innerHTML='<button class="chip" data-a="send">Send it</button><button class="chip" data-a="photo">Add a photo</button>';thread.appendChild(ac);scd();Array.prototype.forEach.call(ac.querySelectorAll('button'),function(b){b.onclick=function(){var a=b.getAttribute('data-a');ac.remove();if(a==='send'){usr('Send it');hist.push({role:'user',content:'Send it'});ty(function(){var ref='TFS-'+(1000+Math.floor(Math.random()*9000));var n=2+Math.floor(Math.random()*3);try{if(navigator.vibrate)navigator.vibrate([8,40,8]);}catch(e){}bub('bot','<span class="ok">&#10003;</span> <b>Done.</b> You just put this on the city’s radar — it’s with '+esc(dept)+' now (ref '+ref+'). I’ll email you at each step: filed &rarr; acknowledged &rarr; fixed — no chasing on your end.<div class="cf">You’re the <b>'+n+(n===2?'nd':n===3?'rd':'th')+'</b> neighbor to flag this block this month. <span class="muted">(illustrative)</span></div>');});}else{usr('Add a photo');ty(function(){bub('bot','A photo helps the city act faster — and it carries the exact spot. Attached. Want me to send it now?');});}};});}
+ function renderLive(d){var html=d.reply;if(d.standards&&d.standards.length)html+=chips(d.standards);if(d.ready&&d.department){html+='<div class="cch"><span class="pill pgood">&#10003; high confidence</span></div>'+detb(d.serviceName||'the report',d.system||'311',d.standards||[]);}else if(d.needsReview){html+=' <span class="pill pamber">needs a human look</span>';}var b=bub('bot',html);wireDet(b);hist.push({role:'assistant',content:d.reply});if(d.ready&&d.department)actions(d.department);}
+ function respondLive(t){var dd=document.createElement('div');dd.className='b bot ty';dd.innerHTML='<i></i><i></i><i></i>';thread.appendChild(dd);scd();fetch(CLARK_API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({message:t,history:hist})}).then(function(r){return r.json();}).then(function(resp){dd.remove();if(!resp||!resp.reply)throw 0;renderLive(resp);}).catch(function(){dd.remove();respond(t);});}
  function wireDet(d){var t=d.querySelector('[data-det]');if(!t)return;t.onclick=function(){var b=d.querySelector('.detb');if(b){var open=b.classList.toggle('open');t.innerHTML=open?'The details &#9652;':'The details &#9662;';scd();}};}
  function grounded(c,jk,t){
   var r=R[c][jk],jn=J[jk].name,sys=J[jk].sys,noun=NOUN[c]||c.toLowerCase(),mir=mirror(t);
@@ -114,12 +119,8 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
    'I’ll route it to <b>'+esc(r.d)+'</b> through '+sys+', and hold them to the city’s standard for it.',
    '<b>'+esc(r.d)+'</b> owns this one (via '+sys+') — there’s a real repair standard, and I’ll keep them to it.'
   ]);
-  var d=bub('bot',lead(t)+'Got it — the <b>'+esc(noun)+'</b>'+(mir?esc(mir):'')+' in '+esc(jn)+'. '+routeV+chips(r.st)+'<div class="cch"><span class="pill pgood">&#10003; high confidence</span></div>'+detb(r,sys));
-  wireDet(d);
-  var ac=document.createElement('div');ac.className='cch';ac.style.alignSelf='flex-start';
-  ac.innerHTML='<button class="chip" data-a="send">Send it</button><button class="chip" data-a="photo">Add a photo</button>';
-  thread.appendChild(ac);scd();
-  Array.prototype.forEach.call(ac.querySelectorAll('button'),function(b){b.onclick=function(){var a=b.getAttribute('data-a');ac.remove();if(a==='send'){usr('Send it');ty(function(){var ref='TFS-'+(1000+Math.floor(Math.random()*9000));var n=2+Math.floor(Math.random()*3);try{if(navigator.vibrate)navigator.vibrate([8,40,8]);}catch(e){}bub('bot','<span class="ok">&#10003;</span> <b>Done.</b> You just put this on the city’s radar — it’s with '+esc(r.d)+' now (ref '+ref+'). I’ll email you at each step: filed &rarr; acknowledged &rarr; fixed — no chasing on your end.<div class="cf">You’re the <b>'+n+(n===2?'nd':'rd')+'</b> neighbor to flag this block this month. <span class="muted">(illustrative)</span></div>');});}else{usr('Add a photo');ty(function(){bub('bot','A photo helps the city act faster — and it carries the exact spot. Attached. Want me to send it now?');});}};});
+  var d=bub('bot',lead(t)+'Got it — the <b>'+esc(noun)+'</b>'+(mir?esc(mir):'')+' in '+esc(jn)+'. '+routeV+chips(r.st)+'<div class="cch"><span class="pill pgood">&#10003; high confidence</span></div>'+detb(r.sn,sys,r.st));
+  wireDet(d);actions(r.d);
   ctx={awaiting:null,issue:null};
  }
  function review(){bub('bot','I want this on the right desk, so I won’t guess. Tell me a bit more — what are you seeing, and roughly where? <span class="pill pamber">needs a human look</span>');}
@@ -136,7 +137,7 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
   ctx={awaiting:'location',issue:c};
   bub('bot','Got it — sounds like a <b>'+esc(NOUN[c]||c.toLowerCase())+'</b>'+esc(mirror(t))+'. Clark covers <b>Los Angeles</b> and <b>San Francisco</b> so far — which one is it (or the nearest cross-street)?');
  }
- function send(t){t=(t||input.value).trim();if(!t)return;input.value='';sug.style.display='none';usr(t);ty(function(){respond(t);});}
+ function send(t){t=(t||input.value).trim();if(!t)return;input.value='';sug.style.display='none';usr(t);hist.push({role:'user',content:t});if(CLARK_API){respondLive(t);}else{ty(function(){respond(t);});}}
  sendBtn.onclick=function(){send();};
  input.addEventListener('keydown',function(e){if(e.key==='Enter')send();});
  bub('bot','Hey — I’m <b>Clark</b>. Tell me what’s going on with your street, in your own words, and I’ll work out who fixes it and how.');

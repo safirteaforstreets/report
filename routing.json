@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "2026.06.20",
-    "lastReviewed": "2026-06-20",
-    "note": "Maps each issue category to the responsible department, the 311 channel and the governing standards (by source id). Jurisdiction is detected from the report location; unknowns fall back to needs-review."
+    "version": "2026.06.22",
+    "lastReviewed": "2026-06-22",
+    "note": "Maps each issue category to the responsible department, the report channel and the governing standards (by source id). Jurisdiction is detected from the report location (named city/area). City bboxes below are APPROXIMATE for coarse geo only — precise point-in-polygon detection is a planned follow-on. Unknowns fall back to needs-review. Channels verified against official city/county sources on 2026-06-22; no city in this set exposes an Open311 submission API, so Clark names the correct official channel rather than auto-filing."
   },
   "jurisdictions": {
     "Los Angeles": {
@@ -14,7 +14,17 @@
       ],
       "aliases": [
         "los angeles",
-        "los ángeles"
+        "los ángeles",
+        "city of la",
+        "l.a.",
+        "dtla",
+        "hollywood",
+        "venice",
+        "van nuys",
+        "san pedro",
+        "woodland hills",
+        "highland park",
+        "boyle heights"
       ],
       "system": "MyLA311",
       "open311": "Open311 endpoint TBD (confirm for Phase 2C)",
@@ -28,11 +38,186 @@
         37.83
       ],
       "aliases": [
-        "san francisco"
+        "san francisco",
+        "sf"
       ],
       "system": "SF311",
       "open311": "https://mobile311.sfgov.org/open311/v2",
       "generalUrl": "https://sf311.org"
+    },
+    "Unincorporated LA County": {
+      "bbox": null,
+      "aliases": [
+        "unincorporated",
+        "la county",
+        "los angeles county",
+        "county area",
+        "east los angeles",
+        "altadena",
+        "marina del rey",
+        "ladera heights",
+        "view park",
+        "windsor hills",
+        "willowbrook",
+        "florence-firestone",
+        "west athens",
+        "walnut park",
+        "hacienda heights",
+        "rowland heights",
+        "topanga",
+        "castaic",
+        "lennox",
+        "del aire",
+        "west whittier"
+      ],
+      "system": "LA County 311 — The Works",
+      "open311": null,
+      "generalUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/"
+    },
+    "Long Beach": {
+      "bbox": [
+        -118.25,
+        33.74,
+        -118.06,
+        33.88
+      ],
+      "aliases": [
+        "long beach",
+        "lbc"
+      ],
+      "system": "Go Long Beach",
+      "open311": null,
+      "generalUrl": "https://www.longbeach.gov/pages/golongbeach/"
+    },
+    "Santa Clarita": {
+      "bbox": [
+        -118.61,
+        34.36,
+        -118.46,
+        34.47
+      ],
+      "aliases": [
+        "santa clarita",
+        "valencia",
+        "newhall",
+        "saugus",
+        "canyon country"
+      ],
+      "system": "Santa Clarita Resident Service Center",
+      "open311": null,
+      "generalUrl": "https://santaclarita.gov/rsc"
+    },
+    "Glendale": {
+      "bbox": [
+        -118.31,
+        34.12,
+        -118.18,
+        34.27
+      ],
+      "aliases": [
+        "glendale"
+      ],
+      "system": "MyGlendale",
+      "open311": null,
+      "generalUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online"
+    },
+    "Pasadena": {
+      "bbox": [
+        -118.18,
+        34.12,
+        -118.06,
+        34.21
+      ],
+      "aliases": [
+        "pasadena"
+      ],
+      "system": "Pasadena Citizen Service Center",
+      "open311": null,
+      "generalUrl": "https://www.cityofpasadena.net/city-service-center/"
+    },
+    "Pomona": {
+      "bbox": [
+        -117.82,
+        34.02,
+        -117.71,
+        34.09
+      ],
+      "aliases": [
+        "pomona"
+      ],
+      "system": "Pomona Go",
+      "open311": null,
+      "generalUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go"
+    },
+    "Torrance": {
+      "bbox": [
+        -118.37,
+        33.78,
+        -118.3,
+        33.89
+      ],
+      "aliases": [
+        "torrance"
+      ],
+      "system": "myTorranceCA",
+      "open311": null,
+      "generalUrl": "https://www.torranceca.gov/How-Do-I/Report"
+    },
+    "Burbank": {
+      "bbox": [
+        -118.37,
+        34.15,
+        -118.28,
+        34.22
+      ],
+      "aliases": [
+        "burbank"
+      ],
+      "system": "Our Burbank 311",
+      "open311": null,
+      "generalUrl": "https://www.burbankca.gov/report-a-problem"
+    },
+    "Santa Monica": {
+      "bbox": [
+        -118.52,
+        34.0,
+        -118.44,
+        34.05
+      ],
+      "aliases": [
+        "santa monica"
+      ],
+      "system": "Santa Monica 311",
+      "open311": null,
+      "generalUrl": "https://311.santamonica.gov/csp"
+    },
+    "Inglewood": {
+      "bbox": [
+        -118.38,
+        33.91,
+        -118.3,
+        33.98
+      ],
+      "aliases": [
+        "inglewood"
+      ],
+      "system": "Inglewood Citizen Request Tracker",
+      "open311": null,
+      "generalUrl": "https://www.cityofinglewood.org/requesttracker.aspx"
+    },
+    "Downey": {
+      "bbox": [
+        -118.16,
+        33.91,
+        -118.09,
+        33.96
+      ],
+      "aliases": [
+        "downey"
+      ],
+      "system": "Downey Connect",
+      "open311": null,
+      "generalUrl": "https://www.downeyca.org/i-want-to/report"
     }
   },
   "routes": [
@@ -203,6 +388,864 @@
       "typicalSLA": "",
       "standards": [],
       "sourceUrl": "https://sf311.org",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Pothole",
+      "department": "LA County Public Works — Road Maintenance Division",
+      "system": "LA County 311 — The Works",
+      "serviceName": "Pothole / roadway repair",
+      "fileVia": "The Works app/web or (626) 458-3981",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Graffiti",
+      "department": "LA County Public Works — Graffiti Abatement",
+      "system": "LA County 311 — The Works",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Graffiti hotline (800) 675-4357 (24/7) or The Works",
+      "typicalSLA": "~48 hrs",
+      "standards": [],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Trash / dumping",
+      "department": "LA County Public Works — CleanLA",
+      "system": "LA County 311 — The Works",
+      "serviceName": "Illegal dumping",
+      "fileVia": "stopillegaldumping.com or (888) 253-2652 (CLEAN-LA)",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Broken streetlight",
+      "department": "Southern California Edison (most poles) / LA County Public Works (non-SCE poles)",
+      "system": "LA County 311 — The Works",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Check the pole: SCE-marked → SCE (800) 611-1911; otherwise LA County PW (800) 675-4357",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Blocked sidewalk",
+      "department": "LA County Public Works — Road Maintenance Division",
+      "system": "LA County 311 — The Works",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "The Works app/web or (626) 458-3981",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Unincorporated LA County",
+      "category": "Something else",
+      "department": "",
+      "system": "LA County 311 — The Works",
+      "serviceName": "",
+      "fileVia": "LA County 311 — The Works (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://pw.lacounty.gov/explore-public-works/report-a-problem/",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Pothole",
+      "department": "Public Works",
+      "system": "Go Long Beach",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Go Long Beach app/web or (562) 570-2700",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Graffiti",
+      "department": "Public Works — Clean Team",
+      "system": "Go Long Beach",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Go Long Beach; private-property hotline (562) 570-2773",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Trash / dumping",
+      "department": "Public Works — Refuse",
+      "system": "Go Long Beach",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "online form or Refuse hotline (562) 570-2876",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Broken streetlight",
+      "department": "Public Works (city-owned streetlights)",
+      "system": "Go Long Beach",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Go Long Beach or (562) 570-2700",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Blocked sidewalk",
+      "department": "Public Works",
+      "system": "Go Long Beach",
+      "serviceName": "Sidewalk maintenance",
+      "fileVia": "Go Long Beach or (562) 570-2700",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Long Beach",
+      "category": "Something else",
+      "department": "",
+      "system": "Go Long Beach",
+      "serviceName": "",
+      "fileVia": "Go Long Beach (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.longbeach.gov/pages/golongbeach/",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Pothole",
+      "department": "Public Works — Street Maintenance",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Resident Service Center (santaclarita.gov/rsc) or app",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Graffiti",
+      "department": "Community Preservation — Graffiti Removal",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "Graffiti removal",
+      "fileVia": "(661) 252-5326 (25-CLEAN) or Resident Service Center",
+      "typicalSLA": "~24 hrs",
+      "standards": [],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Trash / dumping",
+      "department": "Environmental Services (dumping) / Burrtec (bulky)",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "Environmental Services (661) 286-4098 or bulky pickup Burrtec (661) 222-2249",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Broken streetlight",
+      "department": "Neighborhood Services — Streetlight Maintenance District (city-owned)",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Resident Service Center or (661) 290-2200",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Maintenance",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Resident Service Center or app",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Clarita",
+      "category": "Something else",
+      "department": "",
+      "system": "Santa Clarita Resident Service Center",
+      "serviceName": "",
+      "fileVia": "Santa Clarita Resident Service Center (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://santaclarita.gov/rsc",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Pothole",
+      "department": "Public Works — Maintenance Services",
+      "system": "MyGlendale",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "MyGlendale app/web or (818) 548-3950",
+      "typicalSLA": "~3 days",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Graffiti",
+      "department": "Neighborhood Services — T.A.G.G.",
+      "system": "MyGlendale",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Report Graffiti form, MyGlendale, or (818) 548-3700",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Trash / dumping",
+      "department": "Public Works — Integrated Waste Management",
+      "system": "MyGlendale",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "Bulky Item form or (818) 548-3916",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Broken streetlight",
+      "department": "Glendale Water & Power (GWP, city utility)",
+      "system": "MyGlendale",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Report a Broken Street Light form or GWP (855) 550-4497",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Maintenance Services / Engineering",
+      "system": "MyGlendale",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "MyGlendale app/web or (818) 548-3950",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Glendale",
+      "category": "Something else",
+      "department": "",
+      "system": "MyGlendale",
+      "serviceName": "",
+      "fileVia": "MyGlendale (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.glendaleca.gov/residents/how-do-i/contact-the-city/report-a-problem-online",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Pothole",
+      "department": "Public Works — Street Maintenance",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Citizen Service Center (626) 744-7311 or online/app",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Graffiti",
+      "department": "Public Works — Graffiti Abatement",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Graffiti hotline (626) 744-7622 or Citizen Service Center",
+      "typicalSLA": "~48 hrs (zero tolerance)",
+      "standards": [],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Trash / dumping",
+      "department": "Public Works — Street Maintenance & Integrated Waste",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "Citizen Service Center (626) 744-7311 or online/app",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Broken streetlight",
+      "department": "Public Works — Street Maintenance (city-owned)",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Citizen Service Center (626) 744-7311 or online/app",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Maintenance",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Citizen Service Center (626) 744-7311 or online/app",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pasadena",
+      "category": "Something else",
+      "department": "",
+      "system": "Pasadena Citizen Service Center",
+      "serviceName": "",
+      "fileVia": "Pasadena Citizen Service Center (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.cityofpasadena.net/city-service-center/",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Pothole",
+      "department": "Public Works — Street Maintenance",
+      "system": "Pomona Go",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Pomona Go app/web or (909) 620-3665",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Graffiti",
+      "department": "Public Works — Graffiti Removal",
+      "system": "Pomona Go",
+      "serviceName": "Graffiti removal",
+      "fileVia": "24-hr graffiti line (909) 620-2265 or Pomona Go",
+      "typicalSLA": "~24–48 hrs",
+      "standards": [],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Trash / dumping",
+      "department": "Public Works — Solid Waste / Athens Services",
+      "system": "Pomona Go",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "bulky pickup Athens (888) 314-0061; right-of-way dumping (909) 620-3665 or Pomona Go",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Broken streetlight",
+      "department": "Public Works — Traffic Signal & Street Light Maintenance (city-owned)",
+      "system": "Pomona Go",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Pomona Go or (909) 620-2395",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Maintenance",
+      "system": "Pomona Go",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Pomona Go or (909) 620-3665",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Pomona",
+      "category": "Something else",
+      "department": "",
+      "system": "Pomona Go",
+      "serviceName": "",
+      "fileVia": "Pomona Go (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.pomonaca.gov/our-city/online-services/new-pomona-go",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Pothole",
+      "department": "Public Works — Street Operations",
+      "system": "myTorranceCA",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "myTorranceCA app or (310) 781-6900",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Graffiti",
+      "department": "General Services Department",
+      "system": "myTorranceCA",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Graffiti hotline (310) 781-7149, Torrance Graffiti app, or myTorranceCA",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Trash / dumping",
+      "department": "Public Works (removal) / Code Enforcement (report a dumper)",
+      "system": "myTorranceCA",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "myTorranceCA or (310) 781-6900; report a dumper to Code Enforcement (310) 618-5929",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Broken streetlight",
+      "department": "Southern California Edison (most poles) / Public Works (city-owned)",
+      "system": "myTorranceCA",
+      "serviceName": "Streetlight outage",
+      "fileVia": "SCE: sce.com report a streetlight out or (800) 611-1911; city lights: Public Works (310) 781-6900",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Operations / Engineering",
+      "system": "myTorranceCA",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "myTorranceCA or (310) 781-6900",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Torrance",
+      "category": "Something else",
+      "department": "",
+      "system": "myTorranceCA",
+      "serviceName": "",
+      "fileVia": "myTorranceCA (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.torranceca.gov/How-Do-I/Report",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Pothole",
+      "department": "Public Works — Street Maintenance",
+      "system": "Our Burbank 311",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Our Burbank 311 or (818) 238-3800",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Graffiti",
+      "department": "Public Works — Street Maintenance",
+      "system": "Our Burbank 311",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Our Burbank 311 or (818) 238-3800",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Trash / dumping",
+      "department": "Public Works — Solid Waste & Recycling",
+      "system": "Our Burbank 311",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "Our Burbank 311 or bulkyitemcollection@burbankca.gov",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Broken streetlight",
+      "department": "Burbank Water & Power (BWP, city utility)",
+      "system": "Our Burbank 311",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Our Burbank 311 (Report a Broken Streetlight) or BWP (818) 238-3700",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Maintenance",
+      "system": "Our Burbank 311",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Our Burbank 311 or (818) 238-3800",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Burbank",
+      "category": "Something else",
+      "department": "",
+      "system": "Our Burbank 311",
+      "serviceName": "",
+      "fileVia": "Our Burbank 311 (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.burbankca.gov/report-a-problem",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Pothole",
+      "department": "Public Works — Street Services",
+      "system": "Santa Monica 311",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Santa Monica 311 app/web or (310) 458-8721",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Graffiti",
+      "department": "Public Works",
+      "system": "Santa Monica 311",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Santa Monica 311 or (310) 458-2331",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Trash / dumping",
+      "department": "Public Works — Resource Recovery & Recycling",
+      "system": "Santa Monica 311",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "Santa Monica 311 or (866) 311-7266 (allow 7–10 days)",
+      "typicalSLA": "7–10 days (bulky)",
+      "standards": [],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Broken streetlight",
+      "department": "Public Works — Street Services (city-owned)",
+      "system": "Santa Monica 311",
+      "serviceName": "Streetlight outage",
+      "fileVia": "Santa Monica 311 or (310) 458-8523",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Street Services",
+      "system": "Santa Monica 311",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Santa Monica 311 or (310) 458-8721",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Santa Monica",
+      "category": "Something else",
+      "department": "",
+      "system": "Santa Monica 311",
+      "serviceName": "",
+      "fileVia": "Santa Monica 311 (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://311.santamonica.gov/csp",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Pothole",
+      "department": "Public Works — Public Services",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Citizen Request Tracker or (310) 412-5340",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Graffiti",
+      "department": "Graffiti Abatement (Parks, Recreation & Community Services)",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "Graffiti removal",
+      "fileVia": "Graffiti hotline (310) 412-8739 or Citizen Request Tracker",
+      "typicalSLA": "~24 hrs",
+      "standards": [],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Trash / dumping",
+      "department": "Republic/Consolidated (bulky) / Code Enforcement / Public Works (roadway)",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "bulky pickup (800) 299-4898; private property Code Enforcement (310) 412-5590; roadway Public Works (310) 412-5340",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Broken streetlight",
+      "department": "Southern California Edison (SCE) — most streetlights",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "Streetlight outage",
+      "fileVia": "SCE: sce.com report a streetlight out or (800) 611-1911; city: Public Works (310) 412-5333",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Public Services",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Citizen Request Tracker or (310) 412-5340",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Inglewood",
+      "category": "Something else",
+      "department": "",
+      "system": "Inglewood Citizen Request Tracker",
+      "serviceName": "",
+      "fileVia": "Inglewood Citizen Request Tracker (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.cityofinglewood.org/requesttracker.aspx",
+      "needsReview": true
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Pothole",
+      "department": "Public Works — Maintenance Services (Street Maintenance)",
+      "system": "Downey Connect",
+      "serviceName": "Pothole / street repair",
+      "fileVia": "Downey Connect app/web or (562) 904-7194",
+      "typicalSLA": "varies",
+      "standards": [
+        "caltrans-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Graffiti",
+      "department": "Public Works — Facility Maintenance",
+      "system": "Downey Connect",
+      "serviceName": "Graffiti removal",
+      "fileVia": "24-hr Graffiti Hotline (562) 923-4484 or Downey Connect",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Trash / dumping",
+      "department": "Public Works — Maintenance Services / Athens Services (bulky)",
+      "system": "Downey Connect",
+      "serviceName": "Illegal dumping / bulky pickup",
+      "fileVia": "bulky pickup Athens (562) 259-1239; illegal dumping (562) 904-7194 or Downey Connect",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Broken streetlight",
+      "department": "Southern California Edison (SCE) — majority of streetlights",
+      "system": "Downey Connect",
+      "serviceName": "Streetlight outage",
+      "fileVia": "SCE: sce.com report a streetlight out or (800) 611-1911; city lights: Public Works (562) 904-7194",
+      "typicalSLA": "varies",
+      "standards": [],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Blocked sidewalk",
+      "department": "Public Works — Maintenance Services (Street Maintenance)",
+      "system": "Downey Connect",
+      "serviceName": "Sidewalk repair / obstruction",
+      "fileVia": "Downey Connect app/web or (562) 904-7194",
+      "typicalSLA": "varies",
+      "standards": [
+        "prowag-2023",
+        "greenbook-2024"
+      ],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
+      "needsReview": false
+    },
+    {
+      "jurisdiction": "Downey",
+      "category": "Something else",
+      "department": "",
+      "system": "Downey Connect",
+      "serviceName": "",
+      "fileVia": "Downey Connect (team will route)",
+      "typicalSLA": "",
+      "standards": [],
+      "sourceUrl": "https://www.downeyca.org/i-want-to/report",
       "needsReview": true
     }
   ]

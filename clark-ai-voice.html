@@ -98,7 +98,7 @@ body{margin:0;background:#EFE7D6;color:#19222E;font-family:-apple-system,BlinkMa
  var KW=[['Pothole',['pothole','hole','road','asphalt','crater','tire']],['Graffiti',['graffiti','tag','spray','vandal','paint']],['Trash / dumping',['trash','dump','couch','mattress','garbage','litter','furniture','junk','pile']],['Broken streetlight',['streetlight','street light','light','lamp','dark','bulb','flicker']],['Blocked sidewalk',['sidewalk','curb','trip','wheelchair','walkway']]];
  var OTHER=['chicago','new york','nyc','brooklyn','queens','houston','phoenix','philadelphia','san antonio','san diego','dallas','austin','seattle','denver','boston','portland','oakland','sacramento','san jose','long beach','miami','atlanta','las vegas','detroit','nashville'];
  var ctx={awaiting:null,issue:null};
- var CLARK_API='';
+ var CLARK_API='https://clark-brain-tfs-ard3ftgpf7gsdher.canadacentral-01.azurewebsites.net/api/clark';
  var hist=[];
  function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
  function pick(a){return a[Math.floor(Math.random()*a.length)];}

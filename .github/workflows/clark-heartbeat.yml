@@ -1,0 +1,30 @@
+# Clark heartbeat — keeps clark-brain actively USED every day (Functions +
+# Azure OpenAI + Application Insights now; Speech + Key Vault too once the voice
+# patch is deployed). This is what makes the Azure workloads count as "in use"
+# for the Founders Hub $25K credit unlock.
+#
+# INSTALL: put this file at  .github/workflows/clark-heartbeat.yml  in the
+# clark-brain repo (safirteaforstreets/clark-brain) — or the report repo —
+# then commit + push. It runs FREE on GitHub's runners. No secrets needed
+# (the endpoint is anonymous; the origin allow-list lets server-to-server through).
+# You can also trigger it by hand from the repo's Actions tab (Run workflow).
+
+name: clark-heartbeat
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # ~05:00 PT daily
+    - cron: "0 1 * * *"    # ~17:00 PT daily (backup in case a scheduled run is skipped)
+  workflow_dispatch: {}     # manual "Run workflow" button
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Clark
+        run: |
+          curl -s -m 30 -X POST \
+            "https://clark-brain-tfs-ard3ftgpf7gsdher.canadacentral-01.azurewebsites.net/api/clark" \
+            -H "content-type: application/json" \
+            -d '{"message":"daily health check: big pothole on Main Street near the school","history":[],"lang":"en","tts":true}' \
+            -w "\n---\nHTTP %{http_code}\n"
